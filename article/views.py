@@ -3,12 +3,13 @@ from django.shortcuts import render
 # Create your views here.
 from article.models import Article
 from rest_framework.views import APIView
+from rest_framework.response import Response
 from .serializers import ArticleSerializer
 from django.http import Http404
 
 class ArticleList(APIView):
     def get(self,request,format=None):
-        articles=Articles.objects.all()
+        articles=Article.objects.all()
         serializer=ArticleSerializer(articles,many=True)
         return Response(serializer.data)
 
