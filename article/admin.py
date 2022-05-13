@@ -1,6 +1,13 @@
 from django.contrib import admin
-
-# Register your models here.
 from .models import Article
 
-admin.site.register([Article])
+
+class ArticleAdmin(admin.ModelAdmin):
+    list_display = ['title', 'author', 'created']
+
+    list_filter = ['author', ]
+
+    list_per_page = 10
+
+
+admin.site.register(Article, ArticleAdmin)
