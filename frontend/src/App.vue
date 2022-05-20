@@ -1,27 +1,25 @@
 <template>
-<div>
-  <HelloWorld/>
-  </div>
+    <BlogHeader />
+    <ArticleList />
+    <BlogFooter />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ArticleList from './components/ArticleList.vue';
+import BlogHeader from './components/BlogHeader.vue';
+import BlogFooter from './components/BlogFooter.vue';
+
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  name: "App",
+  components: { ArticleList, BlogHeader, BlogFooter },
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: Georgia, Arial, sans-serif;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 </style>
