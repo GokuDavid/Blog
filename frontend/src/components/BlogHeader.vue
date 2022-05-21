@@ -1,6 +1,6 @@
 <template>
         <div id="header">
-            <h1 align="center">文章列表</h1>
+            <h1 align="center">博客</h1>
             <hr>
         </div>
 </template>

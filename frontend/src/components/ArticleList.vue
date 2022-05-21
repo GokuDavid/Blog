@@ -1,20 +1,22 @@
 <template>
-   <div>
+  <div>
     <el-row>
-      <el-col :span="8">
+      <el-col :span="6">
         <div class="grid-content bg-purple" />
       </el-col>
-      <el-col :span="8">
+      <el-col :span="12">
         <!-- <div class="grid-content bg-purple-light" /> -->
         <div v-for="article in articles" v-bind:key="article.id" id="articles">
-          <div><span>{{ article.title }}</span> </div>
-          <div>{{ article.body }}</div>
+          <router-link :to="{ name: 'ArticleDetail', params: { id: article.id } }" class="article-title">
+            {{ article.title }}
+          </router-link>
+          <div>{{ snippet(article.body) }}</div>
           <div>
             <div>{{ formatted_time(article.created) }}</div>
           </div>
         </div>
       </el-col>
-      <el-col :span="8">
+      <el-col :span="6">
         <div class="grid-content bg-purple" />
       </el-col>
     </el-row>
@@ -41,8 +43,13 @@ export default {
     formatted_time: function (iso_date_string) {
       const date = new Date(iso_date_string);
       return date.toLocaleDateString()
-    }
+    },
+    snippet:function(string){
+      return string.substring(0,100)+'...'
+    
   }
+  }
+  
 }
 </script>
 

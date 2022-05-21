@@ -1,11 +1,7 @@
-from tabnanny import verbose
-from django.db import models
-
-# Create your models here.
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
-
+from markdown import Markdown
 
 class Article(models.Model):
 
@@ -15,6 +11,17 @@ class Article(models.Model):
     updated = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(
         User, null=True, on_delete=models.CASCADE, related_name='articles')
+
+    def get_md(self):
+        md=Markdown(
+            extensions=[
+                'markdown.extensions.extra', 
+                'markdown.extensions.codehilite',
+                'markdown.extensions.toc',
+            ]
+        )
+        md_body=md.convert(self.body)
+        return md_body,md.toc
 
     def __str__(self):
         return self.title
