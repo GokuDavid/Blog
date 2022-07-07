@@ -1,35 +1,22 @@
 <template>
   <a-layout class="layout">
-    <a-layout-header>
-      <div class="logo" />
-      <a-menu
-        v-model:selectedKeys="selectedKeys"
-        theme="dark"
-        mode="horizontal"
-        :style="{ lineHeight: '64px' }"
-      >
-        <a-menu-item key="1">nav 1</a-menu-item>
-        <a-menu-item key="2">nav 2</a-menu-item>
-        <a-menu-item key="3">nav 3</a-menu-item>
-      </a-menu>
-    </a-layout-header>
-    <router-view/>
-    <a-layout-footer style="text-align: center">
-      Ant Design ©2018 Created by Ant UED
-    </a-layout-footer>
+    <TheHeader></TheHeader>
+    <router-view />
+ <TheFooter></TheFooter>
   </a-layout>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref } from "vue";
+import TheHeader from "./components/the-header.vue";
+import TheFooter from "./components/the-footer.vue";
+
 export default defineComponent({
-  setup() {
-    return {
-      selectedKeys: ref<string[]>(['2']),
-    };
-  },
+  name: "App",
+  components: { TheHeader, TheFooter}
 });
 </script>
+
 <style>
 .site-layout-content {
   min-height: 280px;
@@ -48,7 +35,7 @@ export default defineComponent({
   margin: 16px 0 16px 24px;
 }
 
-[data-theme='dark'] .site-layout-content {
+[data-theme="dark"] .site-layout-content {
   background: #141414;
 }
 </style>
