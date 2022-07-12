@@ -1,3 +1,18 @@
 GET  http://127.0.0.1:8000/api/article/
 
 ###
+
+POST http://127.0.0.1:8000/api/article/
+content-type: application/json
+
+{
+    "title":"Hendry",
+    "body":"61888"
+}
+
+###
+
+GET  http://127.0.0.1:8000/api/article/1
+
+###
+

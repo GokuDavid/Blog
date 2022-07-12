@@ -5,9 +5,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import ArticleSerializer
 from django.http import Http404
+from .permissions import IsAdminUserOrReadOnly
 
 
 class ArticleList(APIView):
+    permission_classes=[IsAdminUserOrReadOnly]
     def get(self, request, format=None):
         articles = Article.objects.all()
         serializer = ArticleSerializer(articles, many=True)
@@ -22,6 +24,7 @@ class ArticleList(APIView):
 
 
 class ArticleDetail(APIView):
+    permission_classes=[IsAdminUserOrReadOnly]
     def get_object(self, pk):
         try:
             return Article.objects.get(pk=pk)
